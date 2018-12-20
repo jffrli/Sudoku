@@ -4,16 +4,19 @@
 public class SudokuSquare {
 	int[][] square;
 
-	/*Constructor
+	/**
+	Constructor
 	Initializes the square
 	*/
 	public SudokuSquare() {
 		square = new int[3][3];
 	}
 
-	/*Adds a value to a position
-	TODO
-	throw exception for invalid input (or check for invalid inputs further up)
+	/**
+	Adds a value to a specified position
+	@param x The row to add to
+	@param y The column to add to
+	@param value The value to add
 	*/
 	public void addVal(int x, int y, int value) {
 		this.square[x][y] = value;
