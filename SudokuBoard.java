@@ -63,6 +63,27 @@ public class SudokuBoard {
 	}
 
 	/**
+	Checks if a value is in a given square
+	@param x The row (in the 3x3 array of squares)
+	@param y The column (in the 3x3 array of sqaures)
+	@param value The value to check for
+	@return true if the value is inside the given square
+	*/
+	public boolean checkSquare(int x, int y, int value) {
+		return this.checkSquare(this.getSquare(x,y), value);
+	}
+
+	/**
+	Checks if a value is in a given square
+	@param square The square to check
+	@param value The value to check for
+	@return true if the value is inside the given square
+	*/
+	public boolean checkSquare(SudokuSquare square, int value) {
+		return square.checkVal(value);
+	}
+
+	/**
 	Returns the value at a specified location
 	@param x The row
 	@param y The column
