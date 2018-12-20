@@ -118,13 +118,14 @@ public class SudokuBoard {
 	Intended for UI display purposes
 	@return a 9x9 int array of all the values inside the board
 	*/
-	public int toArray() {
+	public int[][] toArray() {
 		int[][] ret = new int [9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				ret[i][j] = this.getVal(i,j);
 			}
 		}
+		return ret;
 	}
 
 	/**
