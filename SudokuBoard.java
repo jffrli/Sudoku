@@ -93,6 +93,20 @@ public class SudokuBoard {
 	}
 
 	/**
+	Returns a 9x9 array of all the board's contents
+	Intended for UI display purposes
+	@return a 9x9 int array of all the values inside the board
+	*/
+	public int toArray() {
+		int[][] ret = new int [9][9];
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				ret[i][j] = this.getVal(i,j);
+			}
+		}
+	}
+
+	/**
 	Returns a string representation of the board
 	Note: when more of the project is written, this will likely change into the same format as the squares
 	@return a string representation of the board in a format like a real sudoku
