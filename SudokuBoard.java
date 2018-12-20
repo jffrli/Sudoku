@@ -94,6 +94,7 @@ public class SudokuBoard {
 
 	/**
 	Returns a string representation of the board
+	Note: when more of the project is written, this will likely change into the same format as the squares
 	@return a string representation of the board in a format like a real sudoku
 	*/
 	public String toString() {
