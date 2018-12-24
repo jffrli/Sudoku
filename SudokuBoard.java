@@ -36,30 +36,32 @@ public class SudokuBoard {
 	Checks if a value is in a given row
 	@param row The row to check
 	@param value The value to check for
-	@return true if the value is in the given row
+	@return number of times the value occurs in the row
 	*/
-	public boolean checkRow(int row, int value) {
+	public int checkRow(int row, int value) {
+		int ret = 0;
 		for (int i = 0; i < 9; i++) {
 			if (this.getVal(row,i) == value) {
-				return true;
+				ret++;
 			}
 		}
-		return false;	
+		return ret;
 	}
 
 	/**
 	Checks if a value is in a given column
 	@param col The column to check
 	@param value The value to check for
-	@return true if the value is in the given column
+	@return number of times the value occurs in the column
 	*/
-	public boolean checkCol(int col, int value) {
+	public int checkCol(int col, int value) {
+		int ret = 0;
 		for (int i = 0; i < 9; i++) {
 			if (this.getVal(i,col) == value) {
-				return true;
+				ret++;
 			}
 		}
-		return false;
+		return ret;
 	}
 
 	/**
@@ -69,7 +71,7 @@ public class SudokuBoard {
 	@param value The value to check for
 	@return true if the value is inside the given square
 	*/
-	public boolean checkSquare(int x, int y, int value) {
+	public int checkSquare(int x, int y, int value) {
 		return this.checkSquare(this.getSquare(x,y), value);
 	}
 
@@ -79,7 +81,7 @@ public class SudokuBoard {
 	@param value The value to check for
 	@return true if the value is inside the given square
 	*/
-	public boolean checkSquare(SudokuSquare square, int value) {
+	public int checkSquare(SudokuSquare square, int value) {
 		return square.checkVal(value);
 	}
 
@@ -90,6 +92,7 @@ public class SudokuBoard {
 	@return The value at the row and column
 	*/
 	public int getVal(int x, int y) {
+		//System.out.println("x:"+x+" y:"+y);
 		return board[x/3][y/3].getVal(x%3,y%3);
 	}
 
@@ -106,11 +109,11 @@ public class SudokuBoard {
 
 	/**
 	Returns a specific 3x3 square (usually for testing purposes)
-	@param x The row (in the array of squares, not spaces)
-	@param y The column (in the array of squares, not spaces)
+	@param x a row inside the square
+	@param y a column inside the square
 	*/
 	public SudokuSquare getSquare(int x, int y) {
-		return board[x][y];
+		return board[x/3][y/3];
 	}
 
 	/**
@@ -129,17 +132,38 @@ public class SudokuBoard {
 	}
 
 	/**
-	Returns a string representation of the board
-	Note: when more of the project is written, this will likely change into the same format as the squares
-	@return a string representation of the board in a format like a real sudoku
+	Returns a string representation of the board's values
+	@return a string representation of the values inside of the board
 	*/
 	public String toString() {
 		String ret = "";
 		String del = "";
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				//ret += del + "(" + i + "," + j + "): " + this.getVal(i,j);
-				//del = "\n";
+				/* //format (x,y): val \n
+				ret += del + "(" + i + "," + j + "): " + this.getVal(i,j);
+				del = "\n";
+				*/
+
+				//format: val1,val2
+				ret += del + this.getVal(i,j);
+				del = ",";
+			}
+		}
+
+		return ret;
+	}
+
+	/**
+	Returns a string representation of the board in a sudoku board-like format
+	@return a string representation of the board
+	*/
+	public String sudokuPrint() {
+		String ret = "";
+		String del = "";
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+
 				ret += del + this.getVal(i,j);
 				
 				if (j%3 == 2) {

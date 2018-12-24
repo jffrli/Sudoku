@@ -25,47 +25,50 @@ public class SudokuSquare {
 	/**
 	Checks if a value is in the square
 	@param value The value to check for
-	@return true if the value exists inside the square, false otherwise
+	@return number of times the value occurs
 	*/
-	public boolean checkVal(int value) {
+	public int checkVal(int value) {
+		int ret = 0;
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				if (this.square[i][j] == value) {
-					return true;
+					ret++;
 				}
 			}
 		}
-		return false;
+		return ret;
 	}
 
 	/**
 	Checks if a value is in a given row
 	@param row The row to check
 	@param value The value to check for
-	@return true if the value exists inside the row, false otherwise
+	@return number of times the value occurs in the row
 	*/
-	public boolean checkRow(int row, int value) {
+	public int checkRow(int row, int value) {
+		int ret = 0;
 		for (int i = 0; i < 3; i++) {
 			if (this.square[row][i] == value) {
-				return true;
+				ret++;
 			}
 		}
-		return false;
+		return ret;
 	}
 
 	/**
 	Checks if a value is in a given column
 	@param row The column to check
 	@param value The value to check for
-	@return true if the value exists inside the column, false otherwise
+	@return number of times the value occurs in the column
 	*/
-	public boolean checkCol(int col, int value) {
+	public int checkCol(int col, int value) {
+		int ret = 0;
 		for (int i = 0; i < 3; i++) {
 			if (this.square[i][col] == value) {
-				return true;
+				ret++;
 			}
 		}
-		return false;
+		return ret;
 	}
 
 	/**
