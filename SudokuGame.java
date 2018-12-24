@@ -93,6 +93,16 @@ public class SudokuGame {
 	}
 
 	/**
+	Checks if the space is occupied by a puzzle starter
+	@param x The row
+	@param y The column
+	@return true if the space is a puzzle origin number, false otherwise
+	*/
+	public boolean isPuz(int x, int y) {
+		return puzgen[x][y];
+	}
+
+	/**
 	Solves the puzzle
 	@return true if the puzzle was solved, false otherwise
 	*/
@@ -243,6 +253,18 @@ public class SudokuGame {
 			}
 		}
 		return true;
+	}
+
+
+	/**
+	Checks if the puzzle is solved.
+	@return true if the puzzle is solved properly, false otherwise.
+	*/
+	public boolean checkFinished() {
+		if (countVals() >= 81) {
+			return checkProg();
+		}
+		return false;
 	}
 
 
